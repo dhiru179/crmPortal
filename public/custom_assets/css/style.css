@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    
+}
+
+label{
+    
+    font-size: 16px;
+    font-weight: 500;
+    opacity: 0.8;
+}
+.gst_box{
+    position: fixed;
+    top: 53px;
+    left: 8%;
+    z-index: 1;
+    overflow: hidden;
+    
+}
