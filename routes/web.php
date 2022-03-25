@@ -31,5 +31,9 @@ Route::group([], function () {
     Route::get('/dashboard', [DashBoardController::class, 'dashboard'])->name('dashboard');
 
 
+    Route::get('/registration', [DashBoardController::class, 'dashboard'])->name('registration');
+
+
+
 
 });

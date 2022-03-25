@@ -17,7 +17,44 @@
 </head>
 
 <body>
-  
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">registration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#create_users">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
     <!-- Modal Create User -->
     <div class="modal fade" id="create_users" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -33,7 +70,7 @@
                     <form id="registrationFormdata" onsubmit="return registration()">
                         <div class="shadow-lg mb-3 bg-body rounded bg-dark p-3">
                             <div>
-                                <div class="input-group mb-3">
+                                <!-- <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon2"><i class="fa fa-user" aria-hidden="true"></i></span>
                                     <input type="text" class="form-control" name="user" placeholder="User Name" aria-label="" aria-describedby="basic-addon2" required>
                                 </div>
@@ -62,9 +99,14 @@
                                     <input type="password" class="form-control" style="border-right: 0px" name="password_confirmation" placeholder="Confirm Password" aria-label="Password" aria-describedby="basic-addon2" required>
                                     <span class="input-group-text fa fa-eye " onclick="viewPassword(event)" style="background-color: white;"></span>
                                 </div>
-                                <span class="text-danger" id="password_confirmation"></span>
+                                <span class="text-danger" id="password_confirmation"></span> -->
+                                <x-input type="text" label="sda"/>
+                                <x-input type="text" label="sda"/>
+                                <x-input type="email" label="sda"/>
+                                <x-input type="" label="sda"/>
+                                <x-input type="" label="sda"/>
+                                
                             </div>
-
                         </div>
                     </form>
                 </div>
