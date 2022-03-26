@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+
     public function Registration(Request $request)
     {
         try {

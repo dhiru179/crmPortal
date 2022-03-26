@@ -12,7 +12,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function dashboard()
+    public function registration()
     {
         return view('admin/usermaster/registration');
     }
