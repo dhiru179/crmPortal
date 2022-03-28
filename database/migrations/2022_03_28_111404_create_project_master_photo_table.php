@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTypeTable extends Migration
+class CreateProjectMasterPhotoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateUsersTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_type', function (Blueprint $table) {
+        Schema::create('project_master_photo', function (Blueprint $table) {
             $table->id();
-            $table->string('user_type',100);
+            $table->foreignId('project_master_id');
+            $table->string('photo_name',150);
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateUsersTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_type');
+        Schema::dropIfExists('project_master_photo');
     }
 }

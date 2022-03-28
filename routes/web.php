@@ -33,6 +33,7 @@ Route::post('/', [AuthController::class, 'Registration'])->name('registration');
 Route::group([], function () {
 
     Route::get('/dashboard', [DashBoardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard/lead', [DashBoardController::class, 'leadDashboard'])->name('leadDashboard');
 
 
     Route::get('/registration', [UserController::class, 'registration'])->name('registration');

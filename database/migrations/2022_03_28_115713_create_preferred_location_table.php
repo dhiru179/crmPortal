@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTypeTable extends Migration
+class CreatePreferredLocationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateUsersTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_type', function (Blueprint $table) {
+        Schema::create('preferred_location', function (Blueprint $table) {
             $table->id();
-            $table->string('user_type',100);
+            $table->string('city',50);
+            $table->string('location',50);
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateUsersTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_type');
+        Schema::dropIfExists('preferred_location');
     }
 }

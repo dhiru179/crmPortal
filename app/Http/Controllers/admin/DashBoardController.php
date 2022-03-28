@@ -16,5 +16,9 @@ class DashBoardController extends Controller
     {
         return view('admin/dashboard/dashboard');
     }
+    public function leadDashboard()
+    {
+        return view('admin/dashboard/leadDashboard');
+    }
 
 }
