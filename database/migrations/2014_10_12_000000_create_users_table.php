@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('email',100);
             $table->string('phone',15);
             $table->string('team_leaders',100);
-            $table->foreignId('emp_status_id');
+            $table->enum('emp_status',['Active','Absent','Terminated','Inactive']);
             // $table->timestamp('email_verified_at')->nullable();
             // $table->string('password');
             // $table->rememberToken();

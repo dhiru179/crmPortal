@@ -11,14 +11,15 @@
    
     <link rel="stylesheet" href="{{ asset('custom_assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('custom_assets/css/utils.css') }}">
- 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" integrity="sha512-mR/b5Y7FRsKqrYZou7uysnOdCIJib/7r5QeJMFvLNHNhtye3xJp1TdJVPLtetkukFn227nKpXD9OjUc09lx97Q==" crossorigin="anonymous"
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <title>@yield('title')</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom " style="z-index: 1;top:0px;position:sticky">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{route('dashboard')}}">Sale CRM</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +55,8 @@
                             <li><a class="dropdown-item" href="{{route('developer')}}">Developer</a></li>
                             <li><a class="dropdown-item" href="{{route('facility')}}">Facility</a></li>
                             <li><a class="dropdown-item" href="{{route('loanFacility')}}">Loan Facility</a></li>
-                         
+                            <li><a class="dropdown-item" href="{{route('desigination')}}">Desigination</a></li>
+                            <li><a class="dropdown-item" href="{{route('empStatus')}}">Employee Status</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -79,6 +81,7 @@
     <script src="{{ asset('custom_assets/js/script.js') }}"></script>
     <script src="{{ asset('custom_assets/js/fetchData.js') }}"></script>
     <script src="{{ asset('bootstrap/jquery.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js" integrity="sha512-FHZVRMUW9FsXobt+ONiix6Z0tIkxvQfxtCSirkKc5Sb4TKHmqq1dZa8DphF0XqKb3ldLu/wgMa8mT6uXiLlRlw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
    
 

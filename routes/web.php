@@ -45,6 +45,10 @@ Route::group(['middleware' => 'adminAuth'], function () {
 
 
     Route::get('/registration', [UserController::class, 'registration'])->name('registration');
+    Route::post('/post_registration', [UserController::class, 'saveRegistration'])->name('saveRegistration');
+    Route::get('/master/desigination', [UserController::class, 'desigination'])->name('desigination');
+    Route::get('/master/employee_status', [UserController::class, 'empStatus'])->name('empStatus');
+    
 
 
     Route::get('/leadregistration', [LeadController::class, 'leadRegistration'])->name('leadregistration');
