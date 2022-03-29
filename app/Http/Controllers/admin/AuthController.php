@@ -46,6 +46,9 @@ class AuthController extends Controller
     {
        if($request->phone=='7908404065'&&$request->password=='123456')
        {
+                     $request->session()->put('ADMIN_LOGIN',true);
+                // $request->session()->put('USER_ID',$result->id);
+                // $request->session()->put('USER_NAME',$result->username);
         return ['auth'=>true]; 
        }
        else{

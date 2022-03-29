@@ -32,6 +32,14 @@ Route::post('admin/loginauth', [AuthController::class, 'loginAuth'])->name('logi
 
 Route::group(['middleware' => 'adminAuth'], function () {
 
+    Route::get('/logout', function () {
+        session()->forget('ADMIN_LOGIN');
+        // session()->forget('USER_ID');
+        // session()->forget('USER_NAME');
+        session()->flash('msg', 'Logout Successfully');
+        return redirect('/');
+    })->name('logout');
+
     Route::get('/dashboard', [DashBoardController::class, 'dashboard'])->name('dashboard');
     Route::get('/dashboard/lead', [DashBoardController::class, 'leadDashboard'])->name('leadDashboard');
 

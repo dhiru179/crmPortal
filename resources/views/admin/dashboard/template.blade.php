@@ -67,7 +67,7 @@
                 </ul>
                 <form class="d-flex">
 
-                    <a href="{{route('registration')}}" class="btn btn-outline-success" type="button">Sign Up</a>
+                    <a href="{{route('logout')}}" class="btn btn-outline-success" type="button">Logout</a>
                 </form>
             </div>
         </div>
