@@ -44,22 +44,29 @@ class AuthController extends Controller
 
     public function loginAuth(Request $request)
     {
-        $user = DB::table('users')->where(['phone' => trim($request->phone)]);
-        $isExist = $user->first();
-        if ($isExist) {
-            $result = $user->get()[0];
-            if (Hash::check($request->password,$result->password)) {
-                $request->session()->put('ADMIN_LOGIN',true);
-                $request->session()->put('USER_ID',$result->id);
-                $request->session()->put('USER_NAME',$result->username);
-                return ['auth'=>true,'url'=>$_SERVER['HTTP_HOST'].'/admin'];
-            }
-            else {
-                return ['status' => true, 'msg' => 'Invalid Password'];
-            }
-        } else {
-            return ['status' => true, 'msg' => 'Invalid Mobile Number'];
-        }
+       if($request->phone=='7908404065'&&$request->password=='123456')
+       {
+        return ['auth'=>true]; 
+       }
+       else{
+        return ['status' => true, 'msg' => 'Invalid Phone/Password'];  
+       }
+        // $user = DB::table('users')->where(['phone' => trim($request->phone)]);
+        // $isExist = $user->first();
+        // if ($isExist) {
+        //     $result = $user->get()[0];
+        //     if (Hash::check($request->password,$result->password)) {
+        //         $request->session()->put('ADMIN_LOGIN',true);
+        //         $request->session()->put('USER_ID',$result->id);
+        //         $request->session()->put('USER_NAME',$result->username);
+        //         return ['auth'=>true];
+        //     }
+        //     else {
+        //         return ['status' => true, 'msg' => 'Invalid Password'];
+        //     }
+        // } else {
+        //     return ['status' => true, 'msg' => 'Invalid Mobile Number'];
+        // }
     }
 
     public function ForgetPassword()

@@ -15,6 +15,8 @@ class CreateProjectMasterCoverPhotoTable extends Migration
     {
         Schema::create('project_master_cover_photo', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('project_master_id');
+            $table->string('cover_photo_name',150);
             $table->timestamps();
         });
     }

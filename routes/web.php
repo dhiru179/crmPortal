@@ -25,12 +25,12 @@ use App\Http\Controllers\admin\DealController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin/dashboard/login');
 });
-Route::post('/', [AuthController::class, 'Registration'])->name('registration');
+Route::post('admin/loginauth', [AuthController::class, 'loginAuth'])->name('loginAuth');
 
 
-Route::group([], function () {
+Route::group(['middleware' => 'adminAuth'], function () {
 
     Route::get('/dashboard', [DashBoardController::class, 'dashboard'])->name('dashboard');
     Route::get('/dashboard/lead', [DashBoardController::class, 'leadDashboard'])->name('leadDashboard');
