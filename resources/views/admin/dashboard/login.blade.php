@@ -19,48 +19,48 @@
 <body>
 
     <div class="container-fluid mt-5 d-flex justify-content-center justify-items-center">
-        <div class="col-3 card p-3 bg-dark" id="login" style="min-width: 23rem">
-            <div class="shadow-lg p-3 mb-5 bg-body rounded">
-                <h3 class="text-center text-danger "><strong>CRM</strong></h3>
+        <div class="col-3 card p-3 border-success" id="login" style="min-width: 23rem;border-radius:5%;min-height:38rem">
+            <div class="shadow-lg p-3 mb-5 bg-body">
+                <h3 class="text-center text-danger "><strong>LOGO</strong></h3>
             </div>
+            <h3 class="text-center text-danger mb-5">Welcome</h3>
 
             @if (session()->has('msg'))
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    {{ session('msg') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                @endif
-                <div id='flashMsg'></div>
-           
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ session('msg') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+            <div id='flashMsg'></div>
+
             <form onsubmit="return login(event)" id="loginFormdata" class="rounded p-3">
 
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone"
-                            aria-hidden="true"></i></span>
-                    <input type="tel" class="form-control" name="phone" pattern="[789][0-9]{9}" placeholder="Phone"
-                        aria-label="Phone" value="9749228737" aria-describedby="basic-addon1" required>
+                <div class="input-group mb-5">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                    <input type="tel" class="form-control" name="phone" pattern="[789][0-9]{9}" placeholder="Phone" aria-label="Phone" value="9749228737" aria-describedby="basic-addon1" required>
 
                 </div>
 
 
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon2"><i class="fa fa-lock"
-                            aria-hidden="true"></i></span>
-                    <input type="password" class="form-control" style="border-right: 0px" name="password"
-                        placeholder="Password" aria-label="Password" aria-describedby="basic-addon2" required>
-                    <span class="input-group-text fa fa-eye " onclick="viewPassword(event)"
-                        style="background-color: #e7f7fa;"></span>
+                <div class="input-group mb-5">
+                    <span class="input-group-text" id="basic-addon2"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                    <input type="password" class="form-control" style="border-right: 0px" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2" required>
+                    <span class="input-group-text fa fa-eye " onclick="viewPassword(event)" style="background-color: #e7f7fa;"></span>
                 </div>
 
-                <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-success" onclick="login(event)" value="">
+                <div class="d-flex justify-content-center mb-5">
+                    <button type="button" class="btn btn-outline-success w-50" onclick="login(event)" value="">
                         <span class="mx-2">Login</span></span>
                     </button>
             </form>
         </div>
-        <div class="shadow p-3 rounded bg-light mb-3" id="forgot">
-            <i class="fa fa-arrow-left text-danger mx-1" aria-hidden="true"></i>
-            <span class="text-center text-danger">I forgot my password</span>
+        <div class="d-flex justify-content-center mb-5" id="forgot">
+            <div class="p-3 border border-success rounded-3">
+                <a href="" style="text-decoration: none;">
+                <i class="fa fa-arrow-left text-danger mx-1" aria-hidden="true"></i>
+                <span class="text-center text-danger">I forgot my password</span>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -96,7 +96,7 @@
                 },
                 data: $('#loginFormdata').serialize(), // serializes the form's elements.
                 success: function(data) {
-            // console.log(data);
+                    // console.log(data);
                     if (data.status) {
                         let html = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
                         ${data.msg}
@@ -105,9 +105,8 @@
                         $('#flashMsg').html(html);
 
                     }
-                    if(data.auth)
-                    {
-                      window.location.href = "{{route('dashboard')}}";
+                    if (data.auth) {
+                        window.location.href = "{{route('dashboard')}}";
                     }
                     return true;
                 },

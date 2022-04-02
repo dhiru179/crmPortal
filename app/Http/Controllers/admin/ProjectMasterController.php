@@ -18,7 +18,7 @@ class ProjectMasterController extends Controller
     }
     public function developerRegistration()
     {
-        return view('admin/projectMaster/developer');
+        return view('admin/projectMaster/devloper');
     }
     public function facilityRegistration()
     {

@@ -12,39 +12,40 @@
         <div class="d-flex justify-content-center row mx-1" style="overflow:hidden;height:87vh">
             <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 col-xxl-10 p-3">
                 <div class="mb-1">
-                    <a href="{{route('dashboard')}}" class="btn btn-success me-2 tableBtn" value="">New Leads</a>
+                <a href="{{route('dashboard')}}" class="btn btn-outline-secondary me-2 tableBtn" value="">New Leads</a>
                     <a href="{{url('dashboard_todo')}}" class="btn btn-outline-secondary mx-2 tableBtn" value="">ToDo</a>
-                    <a href="{{url('dashboard_calender')}}" class="btn btn-outline-secondary mx-2 tableBtn" value="">Calender</a>
+                    <a href="{{url('dashboard_calender')}}" class="btn btn-success mx-2 tableBtn" value="">Calender</a>
                 </div>
 
                 <div class="table-responsive" id="appendtable" style="height:80vh">
                     <table class="table table-hover table-bordered mb-5">
                         <thead class="thead_sticky">
                             <th width="50">S.No</th>
-                            <th width="100" class="text-center">Name</th>
-                            <th width="200" class="text-center">Mobile</th>
-                            <th width="100" class="text-center">Status</th>
-                            <th width="100" class="text-center">Budget</th>
-                            <th width="100" class="text-center">Interested In</th>
+                            <th width="200" class="text-center">Date</th>
+                            <th width="100" class="text-center">Source</th>
+                            <th width="100" class="text-center">Voice Call</th>
+                            <th width="100" class="text-center">Video Call</th>
+                            <th width="100" class="text-center">Meeting</th>
+                            <th width="100" class="text-center">Site Visit</th>
+                            <th width="100" class="text-center"> Video Site Visit</th>
                             <th width="100" class="text-center" style="min-width:80px">Action</th>
                         </thead>
                         <tbody>
                             @for ($i = 0; $i < 25; $i++)
                                 <tr>
+
                                     <td>1</td>
                                     <td>abc</td>
                                     <td>785956</td>
                                     <td>active</td>
                                     <td>Budget</td>
                                     <td>yes</td>
+                                    <td></td>
+                                    <td></td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <a href="" class="btn btn-info btn-sm m-1" title="VIEW"><i class="fa fa-eye"
-                                                    aria-hidden="true"></i></a>
-                                            <a href="" title="EDIT" class="btn btn-warning btn-sm m-1 "><i
-                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                            <a href="" title="INTERACT" class="btn btn-success btn-sm m-1 "><i
-                                                    class="fa fa-user" aria-hidden="true"></i></a>
+                                            <a href="" class="btn btn-info btn-sm m-1" title="VIEW"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            
                                         </div>
                                     </td>
                                 </tr>
@@ -90,5 +91,5 @@
 
         </div>
     </div>
-    
+  
 @endsection

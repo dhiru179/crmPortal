@@ -8,11 +8,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.min.css') }}">
-   
+
     <link rel="stylesheet" href="{{ asset('custom_assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('custom_assets/css/utils.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" integrity="sha512-mR/b5Y7FRsKqrYZou7uysnOdCIJib/7r5QeJMFvLNHNhtye3xJp1TdJVPLtetkukFn227nKpXD9OjUc09lx97Q==" crossorigin="anonymous"
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" integrity="sha512-mR/b5Y7FRsKqrYZou7uysnOdCIJib/7r5QeJMFvLNHNhtye3xJp1TdJVPLtetkukFn227nKpXD9OjUc09lx97Q==" crossorigin="anonymous" <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <title>@yield('title')</title>
@@ -21,15 +20,25 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom " style="z-index: 1;top:0px;position:sticky">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{route('dashboard')}}">Sale CRM</a>
+            <a href="{{route('dashboard')}}" class="me-3" style="text-decoration: none;">
+                <div class="shadow-lg p-1 bg-light rounded utils_center" style="width: 167px;">
+                    <span class="text-center text-danger" style="font-size:21px;font-weight:900;font-style:oblique">Logo</span>
+                </div>
+            </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  
+                    <li class="nav-item ">
+                        <a href="{{route('dashboard')}}" class="nav-link active">Dashboard</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{route('leadDashboard')}}" class="nav-link active ">Lead Dashboard</a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Registration
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -42,10 +51,10 @@
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
-            
-                  
+
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Masters
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -63,13 +72,11 @@
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{route('leadDashboard')}}" class="nav-link ">Lead Dashboard</a>
-                    </li>
+                    
                 </ul>
                 <form class="d-flex">
 
-                    <a href="{{route('logout')}}" class="btn btn-outline-success" type="button">Logout</a>
+                    <a href="{{route('logout')}}" class="btn btn-outline-light" type="button">Logout</a>
                 </form>
             </div>
         </div>
@@ -82,8 +89,8 @@
     <script src="{{ asset('custom_assets/js/fetchData.js') }}"></script>
     <script src="{{ asset('bootstrap/jquery.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js" integrity="sha512-FHZVRMUW9FsXobt+ONiix6Z0tIkxvQfxtCSirkKc5Sb4TKHmqq1dZa8DphF0XqKb3ldLu/wgMa8mT6uXiLlRlw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
-   
+
+
 
     <div class="">
 

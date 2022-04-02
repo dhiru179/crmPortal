@@ -41,6 +41,8 @@ Route::group(['middleware' => 'adminAuth'], function () {
     })->name('logout');
 
     Route::get('/dashboard', [DashBoardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard_todo', [DashBoardController::class, 'Todo'])->name('todo');
+    Route::get('/dashboard_calender', [DashBoardController::class, 'Calender'])->name('calender');
     Route::get('/dashboard/lead', [DashBoardController::class, 'leadDashboard'])->name('leadDashboard');
 
 
