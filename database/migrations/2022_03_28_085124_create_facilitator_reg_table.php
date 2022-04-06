@@ -17,7 +17,8 @@ class CreateFacilitatorRegTable extends Migration
             $table->id();
             $table->string('facilitator_type',50);
             $table->string('image_name',150);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+$table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

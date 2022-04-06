@@ -15,7 +15,15 @@ class CreateCampaignMasterTable extends Migration
     {
         Schema::create('campaign_master', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('campaign_name', 50);
+            $table->double('budget', 8, 2);
+            $table->string('campagin_status', 50);
+            $table->string('assign_to', 50);
+            $table->text('description');
+            $table->date('end_date');
+            $table->date('start_date');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

@@ -28,7 +28,7 @@
     background: #06414e;
     color: white;
     border-style: hidden;
-    z-index: 0;
+    z-index: 1;
 }
 
 .on_hover:hover {

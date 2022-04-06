@@ -19,7 +19,8 @@ class CreateDesiganationTable extends Migration
             $table->string('desigination',100);
             $table->string('department',50);
             $table->text('description');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+$table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

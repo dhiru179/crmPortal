@@ -3,50 +3,57 @@
 {{-- @section('dash', 'active') --}}
 @section('dashboard_section')
 
-    <nav class="bg-info d-flex justify-content-between border border-dark" aria-label="breadcrumb">
-        <ol class="breadcrumb  m-0  d-flex align-items-center px-3 h4" style="height:51px;font-size:21px;">
-            <li class="breadcrumb-item">User Registration</li>
-        </ol>
-    </nav>
-    <div class="px-3 mt-3">
-        <div class="d-flex align-item-center justify-content-between mb-3 ">
-            <div class="col-6">
-                <button type="button" class="btn btn-primary" onclick="editItem(event,'')">Add Campaign</button>
-            </div>
-            <div class=" col-6">
-                <input type="search" class="form-control " value="" id="inputSearchByname" placeholder="Search">
-            </div>
+<nav class="bg-info d-flex justify-content-between border border-dark" aria-label="breadcrumb">
+    <ol class="breadcrumb  m-0  d-flex align-items-center px-3 h4" style="height:51px;font-size:21px;">
+        <li class="breadcrumb-item">User Registration</li>
+    </ol>
+</nav>
+<div class="px-3 mt-3">
+    <div class="d-flex align-item-center justify-content-between mb-3 ">
+        <div class="col-6">
+            <button type="button" class="btn btn-primary" onclick="editItem(event,'add_')">Add Campaign</button>
         </div>
-        <div class="table-responsive" id="appendtable">
-            <table class="table table-hover table-bordered mb-5">
-                <thead class="thead_sticky">
-                    <th width="50">S.No</th>
-                    <th width="100" class="text-center">Name</th>
-                    <th width="200" class="text-center">Email</th>
-                    <th width="100" class="text-center">User Type</th>
-                    <th width="100" class="text-center">Phone</th>
-                    <th width="100" class="text-center" style="min-width:80px">Action</th>
-                </thead>
-                <tbody id="tbody">
-                    @for ($i = 0; $i < 25; $i++) <tr>
-                        <td>{{$i+1}}</td>
-                        <td>#abc</td>
-                        <td>hr</td>
-                        <td>cs</td>
-                        <td>Budget</td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <a href="" title="VIEW" class="btn btn-info btn-sm m-1"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                <a href="" title="MODIFY" class="btn btn-warning btn-sm m-1 "><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-
-                            </div>
-                        </td>
-                        </tr>
-                        @endfor
-                </tbody>
-            </table>
+        <div class=" col-6">
+            <input type="search" class="form-control " value="" id="inputSearchByname" placeholder="Search">
         </div>
     </div>
+    <div class="table-responsive" id="appendtable">
+        <table class="table table-hover table-bordered mb-5">
+            <thead class="thead_sticky">
+                <th width="50">S.No</th>
+                <th width="100" class="text-center">Name</th>
+                <th width="200" class="text-center">Budget</th>
+                <th width="100" class="text-center">Status</th>
+                <th width="100" class="text-center">Assign To</th>
+                <th width="200" class="text-center">Description</th>
+                <th width="100" class="text-center">End Date</th>
+                <th width="100" class="text-center">Start Date</th>
+                <th width="100" class="text-center" style="min-width:80px">Action</th>
+            </thead>
+            <tbody id="tbody">
+                @foreach($campaign as $key=>$item)
+                <tr>
+                    <td>{{$key+1}}</td>
+                    <td class="text-center">{{$item->campaign_name}}</td>
+                    <td class="text-center">{{$item->budget}}</td>
+                    <td class="text-center">{{$item->campagin_status}}</td>
+                    <td class="text-center">{{$item->assign_to}}</td>
+                    <td class="text-center">{{$item->description}}</td>
+                    <td class="text-center">{{$item->end_date}}</td>
+                    <td class="text-center">{{$item->start_date}}</td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <button onclick="editItem(event,'edit_')" type="button" title="VIEW" class="btn btn-info btn-sm m-1"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                            <button onclick="editItem(event,'modify_')" type="button" title="MODIFY" class="btn btn-warning btn-sm m-1 "><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+                 
+            </tbody>
+        </table>
+    </div>
+</div>
 </div>
 
 <div id="activeModal"></div>
@@ -61,8 +68,6 @@
                 let b = (trList[index].children)[2];
                 let c = (trList[index].children)[3];
                 let d = (trList[index].children)[4];
-                let e = (trList[index].children)[5];
-                let f = (trList[index].children)[6];
                 let tdData = (a.innerText).toUpperCase() + (b.innerText).toUpperCase() + (c.innerText)
                     .toUpperCase() + (d.innerText).toUpperCase() + (e.innerText).toUpperCase() + (f.innerText)
                     .toUpperCase();
@@ -80,29 +85,33 @@
         return true;
     })
 
-    function editItem(event, bankDetails) {
-        let action;
-        if (bankDetails != '') {
-            bankDetails = JSON.parse(bankDetails);
-            action = 'edit';
+    function editItem(event, param) {
+        let action = param.split('_');
+
+        if (action[0] == 'add') {
+
+            campaignData = {
+                description: null,
+                assign_to: null,
+                budget: null,
+                campaginStatus: null,
+                campaignName: null,
+                endDate: null,
+                startDate: null,
+            }
+
+        } else if (action[0] == 'edit') {
+            campaignData = JSON.parse(action[1]);
+
+        } else if (action[0] == 'view') {
+
+            campaignData = JSON.parse(action[1]);
+        } else if (action[0] == 'delete') {
 
         } else {
-            action = 'add';
-            bankDetails = {
-                id: "",
-                property_id: "",
-                property_name: "Select Project",
-                account_name: "",
-                account_number: "",
-                bank_name: "",
-                branch: "",
-                ifsc: "",
-                opening_balance: "",
-                opening_balance_date: "",
-                swift_code: "",
-            }
+            alert('error');
         }
-        // console.log(bankDetails.ifsc)
+
         let html = ` <div class="modal fade" id="updateItems" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog  modal-dialog-scrollable">
@@ -112,14 +121,14 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                            <form class="" id="bankFormData" onsubmit="return postItem(event,'')">
+                            <form class="" id="campaignForm" onsubmit="return postItem(event,'')">
                             <div class="form-group mb-3 ">
             <label for="">Campaign Name</label>
             <input type="text" name="campaignName" class="form-control" required>
         </div>
         <div class="form-group mb-3 ">
-            <label for="">Campsign Status</label>
-            <select class="form-select" required>
+            <label for="">Campaign Status</label>
+            <select class="form-select" name="campaginStatus" required>
                 <option value="">Select Campaign Status</option>
                 <option value="Active">Active</option>
                 <option value="Ended">Ended</option>
@@ -143,13 +152,13 @@
        
         <div class="form-group mb-3 ">
             <label for="">Description</label>
-            <textarea type="text" name="Description" rows="1" class="form-control"></textarea>
+            <textarea type="text" name="description" rows="1" class="form-control"></textarea>
         </div>
 
         
         <div class="form-group mb-3 ">
             <label for="">Assigned to</label>
-            <select class="form-select" required>
+            <select class="form-select"name="assign_to" required>
                 <option value="">Select Users</option>
                 <option value="Admin">Admin</option>
                 <option value="Sub-Admin">Sub-Admin</option>
@@ -172,11 +181,12 @@
 
     function postItem(event, getBankId) {
         event.preventDefault();
-        let data;
+        var data;
         if (getBankId == '') {
 
             // here we add and edit bank account
-            data = $('#bankFormData').serialize();
+            data = $('#campaignForm').serialize();
+            console.log(data);
 
         } else if (getBankId.split('=')[0] == 'delete') {
 
@@ -192,7 +202,7 @@
 
         $.ajax({
             type: "POST",
-            url: "",
+            url: "{{route('storeCampaignData')}}",
             headers: {
 
                 "X-CSRF-TOKEN": "{{ csrf_token() }}",
@@ -200,10 +210,7 @@
             data: data, // serializes the form's elements.
             success: function(data) {
                 console.log(data)
-                if (data.status) {
-
-                    location.reload();
-                }
+                operateData(data);
             },
             error: function(data) {
                 console.log('An error occurred.');
@@ -211,5 +218,19 @@
             },
         });
     }
+
+    function operateData(data) {
+        if (data.status == "error") {
+           
+            for (const [key, value] of Object.entries(data.msg)) {
+                        let flashMsg = `<span class="text-danger">${value}</span>`;
+                        $(`input[name=${key}]`).after(flashMsg)
+                        // console.log(`${key}: ${value}`);
+                    }
+            
+           
+        }
+    }
+   
 </script>
 @endsection

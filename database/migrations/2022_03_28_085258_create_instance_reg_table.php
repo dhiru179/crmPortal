@@ -31,7 +31,8 @@ class CreateInstanceRegTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('assign',200);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+$table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

@@ -35,7 +35,8 @@ class CreateDealMasterTable extends Migration
             $table->boolean('billing_status');
             $table->boolean('credit_status');
             $table->text('remarks');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+$table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

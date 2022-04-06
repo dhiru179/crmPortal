@@ -17,7 +17,8 @@ class CreatePreferredLocationTable extends Migration
             $table->id();
             $table->string('city',50);
             $table->string('location',50);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+$table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

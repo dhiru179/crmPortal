@@ -16,7 +16,8 @@ class CreateInteractionTypeTable extends Migration
         Schema::create('interaction_type', function (Blueprint $table) {
             $table->id();
             $table->string('interaction_type',100);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+$table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

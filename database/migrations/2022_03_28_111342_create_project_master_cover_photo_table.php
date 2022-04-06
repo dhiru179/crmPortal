@@ -17,7 +17,8 @@ class CreateProjectMasterCoverPhotoTable extends Migration
             $table->id();
             $table->foreignId('project_master_id');
             $table->string('cover_photo_name',150);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+$table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

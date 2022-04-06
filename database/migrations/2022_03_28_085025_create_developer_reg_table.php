@@ -16,7 +16,8 @@ class CreateDeveloperRegTable extends Migration
         Schema::create('developer_reg', function (Blueprint $table) {
             $table->id();
             $table->string('developer_name',100);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+$table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

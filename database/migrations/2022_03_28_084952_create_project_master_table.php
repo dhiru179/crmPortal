@@ -50,7 +50,8 @@ class CreateProjectMasterTable extends Migration
             $table->double('parking_price_range',8,2);
             $table->double('approx_annual_maintence_charge',8,2);
             $table->double('registration_charge',8,2);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+$table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

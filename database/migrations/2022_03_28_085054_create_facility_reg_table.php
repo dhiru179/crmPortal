@@ -18,7 +18,8 @@ class CreateFacilityRegTable extends Migration
             $table->string('facility_name',100);
             $table->string('facility_type',50);
             $table->string('image_name',150);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+$table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

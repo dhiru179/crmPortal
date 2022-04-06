@@ -23,7 +23,8 @@ class CreateInteractionTable extends Migration
             $table->string('subject',100);
             $table->text('description');
             $table->boolean('mark_as_reminder');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+$table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

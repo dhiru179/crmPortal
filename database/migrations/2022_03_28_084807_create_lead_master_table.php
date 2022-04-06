@@ -17,24 +17,25 @@ class CreateLeadMasterTable extends Migration
             $table->id();
             $table->foreignId('campaign_id');
             $table->foreignId('lead_source_id');
-            $table->string('first_name',50);
-            $table->string('last_name',50);
-            $table->string('mobile',15);
-            $table->string('email',100);
-            $table->string('address',100);
-            $table->string('city',50);
+            $table->string('first_name', 50);
+            $table->string('last_name', 50);
+            $table->string('mobile', 15);
+            $table->string('email', 100);
+            $table->string('address', 100);
+            $table->string('city', 50);
             $table->text('description');
-            $table->string('status',50);
+            $table->string('status', 50);
             $table->date('creation_date');
-            $table->double('budget',8,2);
+            $table->double('budget', 8, 2);
             $table->integer('bhk');
             $table->integer('toilets');
             $table->integer('preferred_floor');
-            $table->double('abu_area',8,2);
+            $table->double('abu_area', 8, 2);
             $table->integer('parking');
-            $table->string('preferred_facing',50);
-            $table->string('preferred_location',50);
-            $table->timestamps();
+            $table->string('preferred_facing', 50);
+            $table->string('preferred_location', 50);
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

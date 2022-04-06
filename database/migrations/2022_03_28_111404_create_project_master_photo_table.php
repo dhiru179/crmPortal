@@ -17,7 +17,8 @@ class CreateProjectMasterPhotoTable extends Migration
             $table->id();
             $table->foreignId('project_master_id');
             $table->string('photo_name',150);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+$table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

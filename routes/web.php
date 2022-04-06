@@ -55,6 +55,7 @@ Route::group(['middleware' => 'adminAuth'], function () {
 
     Route::get('/leadregistration', [LeadController::class, 'leadRegistration'])->name('leadregistration');
     Route::get('/campaignmaster', [LeadController::class, 'campaignMaster'])->name('campaign');
+    Route::post('/campaignmaster', [LeadController::class, 'storeCampaignData'])->name('storeCampaignData');
     Route::get('/leadsource', [LeadController::class, 'leadSource'])->name('leadsource');
 
     Route::get('/project_registration', [ProjectMasterController::class, 'projectRegistration'])->name('projectregistration');
