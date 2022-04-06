@@ -37,7 +37,7 @@
 
                 <div class="input-group mb-5">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                    <input type="tel" class="form-control" name="phone" pattern="[789][0-9]{9}" placeholder="Phone" aria-label="Phone" value="9749228737" aria-describedby="basic-addon1" required>
+                    <input type="tel" class="form-control" name="phone" pattern="[7896][0-9]{9}" placeholder="Phone" aria-label="Phone" value="" aria-describedby="basic-addon1" required>
 
                 </div>
 

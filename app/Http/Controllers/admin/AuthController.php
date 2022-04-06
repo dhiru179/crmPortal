@@ -44,7 +44,7 @@ class AuthController extends Controller
 
     public function loginAuth(Request $request)
     {
-       if($request->phone=='9749228737'&&$request->password=='123456')
+       if($request->phone=='12345678'&&$request->password=='admin')
        {
                      $request->session()->put('ADMIN_LOGIN',true);
                 // $request->session()->put('USER_ID',$result->id);
