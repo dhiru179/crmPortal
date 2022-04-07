@@ -57,10 +57,13 @@ Route::group(['middleware' => 'adminAuth'], function () {
     Route::get('/campaignmaster', [LeadController::class, 'campaignMaster'])->name('campaign');
     Route::post('/campaignmaster', [LeadController::class, 'storeCampaignData'])->name('storeCampaignData');
     Route::get('/leadsource', [LeadController::class, 'leadSource'])->name('leadsource');
+    Route::post('/leadsource', [LeadController::class, 'storeLeadSourceData'])->name('lead_source');
 
     Route::get('/project_registration', [ProjectMasterController::class, 'projectRegistration'])->name('projectregistration');
     Route::get('/project_developer_registration', [ProjectMasterController::class, 'developerRegistration'])->name('developer');
+    Route::post('/project_developer_registration', [ProjectMasterController::class, 'storeDeveloper'])->name('developer_reg');
     Route::get('/project_facility_registration', [ProjectMasterController::class, 'facilityRegistration'])->name('facility');
+    Route::post('/project_facility_registration', [ProjectMasterController::class, 'storeFacilityData'])->name('facility_reg');
     Route::get('/project_loanFacility_registration', [ProjectMasterController::class, 'loanFacilityRegistration'])->name('loanFacility');
     
     Route::get('/deal_registration', [DealController::class, 'dealRegistration'])->name('dealRegistration');

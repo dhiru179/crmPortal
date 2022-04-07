@@ -15,7 +15,7 @@ class CreateLeadSourceTable extends Migration
     {
         Schema::create('lead_source', function (Blueprint $table) {
             $table->id();
-            $table->string('source_code', 50);
+            $table->string('source_code', 100);
             $table->string('source_name', 100);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();

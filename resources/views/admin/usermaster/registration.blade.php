@@ -133,9 +133,9 @@
                     <div class="form-group mb-3">
                         <select class="form-select" name="userType" id="">
                             <option value="">Select UserType</option>
-                            @foreach ($users_type as $user)
-                                <option value="{{ $user->id }}">{{ $user->user_type }}</option>
-                            @endforeach
+                            <!--  @foreach ($users_type as $user)
+                              <option value="{{ $user->id }}">{{ $user->user_type }}</option>
+                            @endforeach -->
                         </select>
                         <span class="text-danger" id="userType"></span>
                     </div>
@@ -144,9 +144,9 @@
                     <div class="form-group mb-3">
                         <select class="form-select" name="desigination" id="">
                             <option value="">Select Desigination</option>
-                            @foreach ($desigination as $item)
-                                <option value="{{ $item->id }}">{{ $item->desigination }}</option>
-                            @endforeach
+                            <!--  @foreach ($desigination as $item)
+                               <option value="{{ $item->id }}">{{ $item->desigination }}</option>
+                             @endforeach -->
                         </select>
                         <span class="text-danger" id="desigination"></span>
                     </div>
