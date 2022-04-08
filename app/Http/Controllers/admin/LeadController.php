@@ -67,11 +67,11 @@ class LeadController extends Controller
             $lead_source_id = $request->lead_source_id;
             if ($lead_source_id > 0) {
                 //update
-                DB::table('lead_source')->where(['id' => $lead_source_id])->update($filterData);
+                DB::table('lead_master')->where(['id' => $lead_source_id])->update($filterData);
                 return ['status' => true, 'msg' => 'Data Update Successfully'];
             } else {
                 //insert
-                DB::table('lead_source')->insert($filterData);
+                DB::table('lead_master')->insert($filterData);
                 return ['status' => true, 'msg' => 'Data insert Successfully'];
             }
         } catch (\Throwable $th) {
