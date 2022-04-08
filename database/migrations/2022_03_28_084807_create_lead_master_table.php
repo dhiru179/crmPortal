@@ -30,7 +30,7 @@ class CreateLeadMasterTable extends Migration
             $table->integer('bhk');
             $table->integer('toilets');
             $table->integer('preferred_floor');
-            $table->double('abu_area', 8, 2);
+            $table->double('sbu_area', 8, 2);
             $table->integer('parking');
             $table->string('preferred_facing', 50);
             $table->string('preferred_location', 50);

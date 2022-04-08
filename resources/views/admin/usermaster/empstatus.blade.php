@@ -2,11 +2,17 @@
 @section('title', 'Employee Status')
 {{-- @section('dash', 'active') --}}
 @section('dashboard_section')
-
+<div>
+<nav class="bg-info d-flex justify-content-between border border-dark" aria-label="breadcrumb">
+        <ol class="breadcrumb  m-0  d-flex align-items-center px-3 h4" style="height:51px;font-size:21px;">
+            <li class="breadcrumb-item">Employee Status</li>
+        </ol>
+        <div class="alert alert-success m-0 d-flex align-items-center" id="flashMsg" role="alert" style="width: 0px;height:51px;position:fixed;right:0;transition:width 1s;border:0;padding:0rem;"></div>
+    </nav>
 <div class="container utils_center">
     <div class="mt-3 card" style="width:33rem;">
         <div class="card-body py-0">
-            <h5 class="card-title text-center py-3">Desigination</h5>
+            <h5 class="card-title text-center py-3">Employee Status</h5>
 
             <form id="registrationFormdata" onsubmit="return registration()">
                 @csrf
@@ -45,13 +51,13 @@
         </div>
     </div>
 </div>
-
+</div>
 <script>
     function registration(e) {
         e.preventDefault();
         $.ajax({
             type: "POST",
-            url: "{{ route('saveRegistration') }}",
+            url: "",
             headers: {
 
                 "X-CSRF-TOKEN": "{{ csrf_token() }}",

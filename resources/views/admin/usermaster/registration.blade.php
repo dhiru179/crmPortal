@@ -206,7 +206,7 @@
     }
 
     function postItem(event) {
-        // event.preventDefault();
+        event.preventDefault();
 
         var data = new FormData();
         $('#formData').serializeArray().forEach((elem) => {
