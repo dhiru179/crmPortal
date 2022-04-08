@@ -89,7 +89,7 @@
 
     function callToActiveModal(getData) {
         const obj = JSON.parse(getData)
-        let fileLink = `<a class="text-danger">{{asset('storage/')}}+${obj.image_name}</a>`;
+        let fileLink = `<a class="text-danger" href="{{asset('storage/')}}/${obj.image_name}">${obj.image_name}</a>`;
         let html = ` <div class="modal fade" id="updateItems" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                             aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog  modal-dialog-scrollable">
@@ -100,7 +100,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <form class="" id="formData" onsubmit="return postItem(event)">
-                                        <input type="hidden" name="facility_reg_id" value="${obj.facility_reg_id}" required>
+                                        <input type="hidden" name="facility_reg_id" value="${obj.id}" required>
                                             <div class="form-group mb-3">
                                                 <label for="">Facility Name</label>
                                                 <input type="text" name="facility_name" value="${obj.facility_name}" class="form-control" required>
@@ -139,20 +139,19 @@
 
 
     function postItem(event) {
-        event.preventDefault();
+        // event.preventDefault();
 
-        let data = new FormData();
+        var data = new FormData();
         $('#formData').serializeArray().forEach((elem) => {
 
             data.append(elem['name'], elem['value']);
 
         });
-        console.log(data);
-        // return true;
         let files = document.querySelectorAll("input[type='file']");
         files.forEach((file) => {
             data.append('file', file.files[0]);
         });
+
         $.ajax({
 
             type: "POST",
@@ -161,6 +160,8 @@
 
                 "X-CSRF-TOKEN": "{{ csrf_token() }}",
             },
+            processData: false,
+            contentType: false,
             data: data, // serializes the form's elements.
 
             success: function(response) {

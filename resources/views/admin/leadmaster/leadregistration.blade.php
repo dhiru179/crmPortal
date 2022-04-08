@@ -2,7 +2,14 @@
 @section('title', 'Lead Registration')
 {{-- @section('dash', 'active') --}}
 @section('dashboard_section')
+<div>
 
+    <nav class="bg-info d-flex justify-content-between border border-dark" aria-label="breadcrumb">
+        <ol class="breadcrumb  m-0  d-flex align-items-center px-3 h4" style="height:51px;font-size:21px;">
+            <li class="breadcrumb-item">Lead Registration</li>
+        </ol>
+        <div class="alert alert-success m-0 d-flex align-items-center" id="flashMsg" role="alert" style="width: 0px;height:51px;position:fixed;right:0;transition:width 1s;border:0;padding:0rem;"></div>
+    </nav>
     <div class="container utils_center mt-3">
         <form class="row" action="" onsubmit="return submitForm(event)">
             <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
@@ -50,8 +57,7 @@
             </div>
             <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
                 <label for="">Creation Date</label>
-                <input id="party" class="form-control" type="date" name="creationDate" min="2017-06-01T08:30"
-                    max="2017-06-30T16:30">
+                <input id="party" class="form-control" type="date" name="creationDate" min="2017-06-01T08:30" max="2017-06-30T16:30">
             </div>
             <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
                 <label for="">Budget(In Lakhs)</label>
@@ -78,9 +84,8 @@
                 <label for="">Parking</label>
                 <select name="parking" class="form-select">
                     <option value="">Parking</option>
-                    @for ($i = 0; $i < 8; $i++)
-                        <option value="{{ $i + 1 }}">{{ $i + 1 }}</option>
-                    @endfor
+                    @for ($i = 0; $i < 8; $i++) <option value="{{ $i + 1 }}">{{ $i + 1 }}</option>
+                        @endfor
                 </select>
             </div>
             <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
@@ -134,13 +139,12 @@
                 <button type="button" onclick="history.back()" class="btn btn-danger mx-2">Cancel</button>
                 <button type="button" class="btn btn-primary mx-2" onclick="submitForm(event)">Save</button>
             </div>
-
         </form>
-
     </div>
-    <script>
-        function submitForm(e) {
-            alert('ok');
-        }
-    </script>
+</div>
+<script>
+    function submitForm(e) {
+        alert('ok');
+    }
+</script>
 @endsection

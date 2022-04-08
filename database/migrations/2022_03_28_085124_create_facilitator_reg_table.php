@@ -15,7 +15,7 @@ class CreateFacilitatorRegTable extends Migration
     {
         Schema::create('facilitator_reg', function (Blueprint $table) {
             $table->id();
-            $table->string('facilitator_type',50);
+            $table->string('facilitator_name',100);
             $table->string('image_name',150);
             $table->timestamp('created_at')->useCurrent();
 $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();

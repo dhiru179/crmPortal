@@ -18,6 +18,9 @@ class LeadController extends Controller
     {
         return view('admin/leadmaster/leadregistration');
     }
+
+
+
     public function campaignMaster()
     {
         $db = [

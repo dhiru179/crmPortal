@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDesiganationTable extends Migration
+class CreateDesiginationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDesiganationTable extends Migration
      */
     public function up()
     {
-        Schema::create('desiganation', function (Blueprint $table) {
+        Schema::create('desigination', function (Blueprint $table) {
             $table->id();
             $table->string('desigination_code',50);
             $table->string('desigination',100);
@@ -31,6 +31,6 @@ $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
      */
     public function down()
     {
-        Schema::dropIfExists('desiganation');
+        Schema::dropIfExists('desigination');
     }
 }

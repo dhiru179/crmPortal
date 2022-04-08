@@ -47,11 +47,12 @@ Route::group(['middleware' => 'adminAuth'], function () {
 
 
     Route::get('/registration', [UserController::class, 'registration'])->name('registration');
-    Route::post('/post_registration', [UserController::class, 'saveRegistration'])->name('saveRegistration');
+    Route::post('/registration', [UserController::class, 'storeUserRegistration'])->name('storeUserRegistration');
     Route::get('/master/desigination', [UserController::class, 'desigination'])->name('desigination');
+    Route::post('/master/desigination', [UserController::class, 'storeDesigination'])->name('storeDesigination');
     Route::get('/master/employee_status', [UserController::class, 'empStatus'])->name('empStatus');
     
-
+    
 
     Route::get('/leadregistration', [LeadController::class, 'leadRegistration'])->name('leadregistration');
     Route::get('/campaignmaster', [LeadController::class, 'campaignMaster'])->name('campaign');
@@ -65,6 +66,7 @@ Route::group(['middleware' => 'adminAuth'], function () {
     Route::get('/project_facility_registration', [ProjectMasterController::class, 'facilityRegistration'])->name('facility');
     Route::post('/project_facility_registration', [ProjectMasterController::class, 'storeFacilityData'])->name('facility_reg');
     Route::get('/project_loanFacility_registration', [ProjectMasterController::class, 'loanFacilityRegistration'])->name('loanFacility');
+    Route::post('/project_loanFacility_registration', [ProjectMasterController::class, 'storeLoanFacilitatorData'])->name('facilitator_reg');
     
     Route::get('/deal_registration', [DealController::class, 'dealRegistration'])->name('dealRegistration');
     
