@@ -148,7 +148,7 @@
         </div>
         <div class="form-group mb-3 ">
             <label for="">End Date</label>
-            <input type="date" name="endDate" value="${obj.end_date}" class="form-control">
+            <input type="date" name="endDate" value="${(obj.end_date==null)?(""):(obj.end_date)}" class="form-control">
             <span class="text-danger" id="endDate"></span>
         </div>
 
@@ -160,7 +160,7 @@
        
         <div class="form-group mb-3 ">
             <label for="">Description</label>
-            <textarea type="text" name="description" rows="1"  class="form-control">${obj.description}</textarea>
+            <textarea type="text" name="description" rows="1"  class="form-control">${(obj.description==null)?(""):(obj.description)}</textarea>
             <span class="text-danger" id="description"></span>
         </div>
 
@@ -168,7 +168,7 @@
         <div class="form-group mb-3 ">
             <label for="">Assigned to</label>
             <select class="form-select"name="assign_to" required>
-            <option value="${(obj.assign_to=="Select")?(""):(obj.assign_to)}" selected>${obj.assign_to}</option>
+            <option value="${(obj.assign_to=="Select")?(""):(obj.assign_to)}" selected>${(obj.assign_to==null)?(""):(obj.assign_to)}</option>
                 <option value="Admin">Admin</option>
                 <option value="Sub-Admin">Sub-Admin</option>
             </select>

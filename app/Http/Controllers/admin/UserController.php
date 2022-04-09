@@ -42,7 +42,7 @@ class UserController extends Controller
                 'empid' => 'required',
                 'desigination' => 'required',
                 'phone' => 'required',
-                'emp_status' => 'required_if:emp_status,Active,Absent,Terminated,Inactive',
+                'emp_status' => 'required|in:Active,Absent,Terminated,Inactive',
             ]);
 
             if ($validator->fails()) {
@@ -59,6 +59,7 @@ class UserController extends Controller
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'team_leaders' => $request->team_leaders,
+                'emp_status'=>$request->emp_status,
             ];
             $filterData = array_filter($data, function ($a) {
                 return isset($a);

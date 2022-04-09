@@ -5,15 +5,6 @@
 
 <div class="container mt-3">
     <form class="row utils_center" action="" onsubmit="return submitForm(event)">
-        <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
-            <label for="">Cover Photos</label>
-            <input type="file" name="coverPic" class="form-control-file">
-        </div>
-
-        <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
-            <label for="">Photos</label>
-            <input type="file" name="pic" class="form-control-file">
-        </div>
 
         <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
             <label for="">Status</label>
@@ -75,11 +66,11 @@
                 <option value="">multiple</option>
             </select>
         </div>
-        <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
+        <div class="form-group col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3"></div>
+        <div class="form-group mb-3 col-12">
             <label for="">Description</label>
-            <select class="form-select" name="description" required>
-                <option value="">htmlEditing</option>
-            </select>
+            <textarea class="form-control" id="editor" name="description" rows="3"></textarea>
+
         </div>
         <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
             <label for="">Loan Pre-Approved By</label>
@@ -97,7 +88,7 @@
         </div>
         <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
             <label for="">Map Latitude</label>
-            <input type="text" name="mapLatitude" class="form-control">
+            <input type="text" id="map" name="mapLatitude" class="form-control">
         </div>
         <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
             <label for="">Map Longitute</label>
@@ -125,7 +116,13 @@
         </div>
         <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
             <label for="">Facings</label>
-            <input type="number" min="1" name="facings" class="form-control">
+            <select class="form-select" name="facings" >
+            <option value="">Select</option>
+                <option value="North">North</option>
+                <option value="East">East</option>
+                <option value="South">South</option>
+                <option value="West">West</option>
+            </select>
         </div>
         <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
             <label for="">Furnished Satus</label>
@@ -179,6 +176,15 @@
             <label for="">Registration Charge</label>
             <input type="number" min="1" name="registrationCharge" class="form-control">
         </div>
+        <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
+            <label for="">Cover Photos</label>
+            <input type="file" name="coverPic" class="form-control">
+        </div>
+
+        <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
+            <label for="">Photos</label>
+            <input type="file" name="pic" class="form-control">
+        </div>
 
         <div class="utils_center my-3 ">
             <button type="button" onclick="history.back()" class="btn btn-danger mx-2">Cancel</button>
@@ -192,5 +198,26 @@
     function submitForm(e) {
         alert('ok');
     }
+    function initialize(){
+     var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+     var myOptions = {
+         zoom: 4,
+         center: myLatlng,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+         }
+      map = new google.maps.Map(document.getElementById("map"), myOptions);
+      var marker = new google.maps.Marker({
+          position: myLatlng, 
+          map: map,
+      title:"Fast marker"
+     });
+} 
+
+google.maps.event.addDomListener(window,'load', initialize);
+
+            ClassicEditor.create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            })
 </script>
 @endsection

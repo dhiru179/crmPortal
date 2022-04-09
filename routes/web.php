@@ -68,6 +68,9 @@ Route::group(['middleware' => 'adminAuth'], function () {
     Route::post('/project_facility_registration', [ProjectMasterController::class, 'storeFacilityData'])->name('facility_reg');
     Route::get('/project_loanFacility_registration', [ProjectMasterController::class, 'loanFacilityRegistration'])->name('loanFacility');
     Route::post('/project_loanFacility_registration', [ProjectMasterController::class, 'storeLoanFacilitatorData'])->name('facilitator_reg');
+    Route::get('/project_location', [ProjectMasterController::class, 'location'])->name('get_location');
+    Route::post('/project_location', [ProjectMasterController::class, 'storeLocation'])->name('store_locatopn');
+    
     
     Route::get('/deal_registration', [DealController::class, 'dealRegistration'])->name('dealRegistration');
     

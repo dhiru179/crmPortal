@@ -63,6 +63,7 @@
                             <li><a class="dropdown-item" href="{{route('facility')}}">Facility</a></li>
                             <li><a class="dropdown-item" href="{{route('loanFacility')}}">Loan Facility</a></li>
                             <li><a class="dropdown-item" href="{{route('desigination')}}">Desigination</a></li>
+                            <li><a class="dropdown-item" href="{{route('get_location')}}">Location</a></li>
                             <li><a class="dropdown-item" href="{{route('empStatus')}}">Employee Status</a></li>
                         </ul>
                     </li>
@@ -82,6 +83,8 @@
     <script src="{{ asset('custom_assets/js/fetchData.js') }}"></script>
     <script src="{{ asset('bootstrap/jquery.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js" integrity="sha512-FHZVRMUW9FsXobt+ONiix6Z0tIkxvQfxtCSirkKc5Sb4TKHmqq1dZa8DphF0XqKb3ldLu/wgMa8mT6uXiLlRlw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <script language=javascript src='http://maps.google.com/maps/api/js?sensor=false'></script>
 
 
 

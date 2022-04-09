@@ -130,14 +130,20 @@
             <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
                 <label for="">Campaign</label>
                 <select name="Campaign" class="form-select">
-                    <option value=""></option>
+                    <option value="">Select Campaign</option>
+                    @foreach($campaign_master as $item)
+                    <option value="{{$item->id}}">{{$item->campaign_name}}</option>
+                    @endforeach
                 </select>
                 <span class="text-danger" id="Campaign"></span>
             </div>
             <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
                 <label for="">Lead Source</label>
                 <select name="LeadSource" class="form-select">
-                    <option value=""></option>
+                    <option value="">Select Lead Source</option>
+                    @foreach($lead_source as $item)
+                    <option value="{{$item->id}}">{{$item->source_name}}</option>
+                    @endforeach
                 </select>
                 <span class="text-danger" id="LeadSource"></span>
             </div>
@@ -151,7 +157,9 @@
             <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
                 <label for="">AssignedTo</label>
                 <select name="AssignedTo" class="form-select">
-                    <option value=""></option>
+                    <option value="">Select</option>
+                    <option value="Advisor">Advisor</option>
+                    <option value="Team Leader">Team Leader</option>
                 </select>
                 <span class="text-danger" id="AssignedTo"></span>
             </div>

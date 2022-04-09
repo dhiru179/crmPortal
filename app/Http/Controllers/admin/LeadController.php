@@ -16,7 +16,12 @@ class LeadController extends Controller
      */
     public function leadRegistration()
     {
-        return view('admin/leadmaster/leadregistration');
+        $db = [
+            'campaign_master'=>DB::table('campaign_master')->get(),
+            'lead_source'=>DB::table('lead_source')->get(),
+            
+        ];
+        return view('admin/leadmaster/leadregistration',$db);
     }
 
     public function storeLead(Request $request)
@@ -59,7 +64,6 @@ class LeadController extends Controller
                 // $request->AssignedTo,
                 // $request->InterestedIn,
                 // $request->ReferredBy,
-
             ];
             $filterData = array_filter($data, function ($a) {
                 return isset($a);
@@ -94,8 +98,8 @@ class LeadController extends Controller
 
             $validator = Validator::make($request->all(), [
 
-                'budget' => 'required|numeric',
                 'campaignName' => 'required',
+                'budget' => 'required|numeric',
                 'startDate' => 'required',
 
             ]);

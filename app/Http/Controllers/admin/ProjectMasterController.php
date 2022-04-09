@@ -157,4 +157,49 @@ class ProjectMasterController extends Controller
             return $th->getMessage();
         }
     }
+    public function location()
+    {
+        $db = [
+            'location' => DB::table('preferred_location')->get(),
+        ];
+
+        return view('admin/projectMaster/location', $db);
+    }
+    public function storeLocation(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+
+                'location' => 'required',
+                'city' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+
+                return ['status' => 'error', 'msg' => $validator->errors()];
+            }
+
+          
+            $data = [
+                'location' => $request->location,
+                'city' => $request->city,
+            ];
+            $filterData = array_filter($data, function ($a) {
+                return isset($a);
+            });
+            $location_id = $request->location_id;
+            if ($location_id > 0) {
+                //update
+                DB::table('preferred_location')->where(['id' => $location_id])->update($data);
+                return ['status' => true, 'msg' => 'Data Update Successfully'];
+            } else {
+                //insert
+                DB::table('preferred_location')->insert($filterData);
+                return ['status' => true, 'msg' => 'Data insert Successfully'];
+            }
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+    
 }

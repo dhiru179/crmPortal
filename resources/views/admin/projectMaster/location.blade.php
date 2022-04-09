@@ -1,46 +1,43 @@
 @extends('admin.dashboard.template')
-@section('title', 'Desigination')
+@section('title', 'Location')
 {{-- @section('dash', 'active') --}}
 @section('dashboard_section')
-
-<div class="">
+<div>
     <nav class="bg-info d-flex justify-content-between border border-dark" aria-label="breadcrumb">
         <ol class="breadcrumb  m-0  d-flex align-items-center px-3 h4" style="height:51px;font-size:21px;">
-            <li class="breadcrumb-item">Desigination</li>
+            <li class="breadcrumb-item">Location</li>
         </ol>
-        <div class="alert alert-success m-0 d-flex align-items-center" id="flashMsg" role="alert" style="width: 0px;height:51px;position:fixed;right:0;transition:width 1s;border:0;padding:0rem;"></div>
+        <div class="alert alert-success m-0 d-flex align-items-center" id="flashMsg" role="alert" style="width: 0px;height:51px;position:fixed;right:0;transition:width 1s;border:0;padding:0rem;">gfffffffff</div>
+
     </nav>
-    <div class="px-3 mt-3">
+    <div class="container mt-3">
         <div class="d-flex align-item-center justify-content-between mb-3 ">
             <div class="col-6">
-                <button type="button" class="btn btn-primary" onclick="addFormData(event)">Add Desigination</button>
+                <button type="button" class="btn btn-primary" onclick="addFormData(event)">Add</button>
             </div>
             <div class=" col-6">
-                <input type="search" class="form-control " value="" id="inputSearchByname" placeholder="Search">
+                <input type="search" class="form-control" value="" id="inputSearchByname" placeholder="Search">
             </div>
         </div>
-        <div class="table-responsive" id="appendtable" >
+        <div class="table-responsive" id="appendtable">
             <table class="table table-hover table-bordered mb-5">
                 <thead class="thead_sticky">
                     <th width="50">S.No</th>
-                    <th width="100" class="text-center">Desigination Code</th>
-                    <th width="200" class="text-center">Desigination</th>
-                    <th width="100" class="text-center">Department</th>
-                    <th width="100" class="text-center">Description</th>
+                    <th width="100" class="text-center">Location</th>
+                    <th width="200" class="text-center">City</th>
                     <th width="100" class="text-center" style="min-width:80px">Action</th>
                 </thead>
                 <tbody id="tbody">
-                    @foreach($desigination as $key=>$item)
+                    @foreach($location as $key=>$item)
                     <tr>
                         <td>{{$key+1}}</td>
-                        <td>{{$item->desigination_code}}</td>
-                        <td>{{$item->desigination}}</td>
-                        <td>{{$item->department}}</td>
-                        <td>{{$item->description}}</td>
+                        <td>{{$item->location}}</td>
+                        <td>{{$item->city}}</td>
                         <td class="text-center">
                             <div class="btn-group">
                                 <button onclick="editFormData(event,'{{json_encode($item)}}')" title="VIEW" class="btn btn-info btn-sm m-1"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                 <button onclick="editFormData(event,'{{json_encode($item)}}')" title="MODIFY" class="btn btn-warning btn-sm m-1 "><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+
                             </div>
                         </td>
                     </tr>
@@ -61,10 +58,7 @@
             for (let index = 0; index < trList.length; index++) {
                 let a = (trList[index].children)[1];
                 let b = (trList[index].children)[2];
-                let c = (trList[index].children)[3];
-                let d = (trList[index].children)[4];
-                let tdData = (a.innerText).toUpperCase() + (b.innerText).toUpperCase() + (c.innerText)
-                    .toUpperCase() + (d.innerText).toUpperCase();
+                let tdData = (a.innerText).toUpperCase() + (b.innerText).toUpperCase();
                 if (tdData.indexOf(input) > -1) {
                     trList[index].style.display = "";
                 } else {
@@ -83,10 +77,8 @@
         event.preventDefault();
         const data = {
             id: 0,
-            desigination_code: "",
-            desigination: "",
-            department: "",
-            description: "",
+            location: "",
+            city: "",
         }
         callToActiveModal(JSON.stringify(data));
         return true;
@@ -101,82 +93,59 @@
     function callToActiveModal(getData) {
         const obj = JSON.parse(getData)
         let html = ` <div class="modal fade" id="updateItems" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog  modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="staticBackdropLabel">Create Item</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                    <div class="modal-body">
-                            <form class="" id="formData" onsubmit="return postItem(event)">
-                          
-                                  <input type="hidden" name="desigination_id" value="${obj.id}" >
-
-                                <div class="form-group mb-3 ">
-                                    <label for="">Desigination Code</label>
-                                    <input type="text" class="form-control" name="desigination_code" value="${obj.desigination_code}" required>
-                                    <span class="text-danger" id="desigination_code"></span>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label for="">Disigination</label>
-                                    <input type="text" class="form-control" name="desigination" value="${obj.desigination}" required>
-                                    <span class="text-danger" id="desigination"></span>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label for="">Department</label>
-                                    <input type="text" class="form-control" name="department" value="${obj.department}" required>
-                                    <span class="text-danger" id="department"></span>
-                                </div>
-                                
-                                <div class="form-group mb-3">
-                                    <label for="">Description</label>
-                                    <textarea class="form-control" name="description" placeholder="Write Something..." >${(obj.description==null)?(""):(obj.description)}</textarea>
-                                    <span class="text-danger" id="description"></span>
-                                </div>        
-
-                                <div class="d-flex justify-content-end border-top py-3">
-                                    <button type="button" class="btn btn-danger mx-2" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-info mx-2" onclick="postItem(event)">Save</button>
-                                </div>  
-                            </form>
-                     </div>
-                </div>
-            </div>
-        </div>`;
+                                        <div class="modal-body">
+                                            <form class="" id="formData" onsubmit="return postItem(event)">
+                                            <input type="hidden" name="location_id" value="${obj.id}">
+                                                <div class="form-group mb-3 col-sm-12  col-md-12  col-lg-12 col-xl-12 col-xxl-12">
+                                                    <label for="">Source Code</label>
+                                                    <input type="text" name="location" value="${obj.location}" class="form-control" required>
+                                                    <span class="text-danger" id="location"></span>
+                                                </div>
+                                                
+                                                <div class="form-group mb-3 col-sm-12  col-md-12  col-lg-12 col-xl-12 col-xxl-12">
+                                                    <label for="">Source Name</label>
+                                                    <input type="text" name="city" value="${obj.city}" class="form-control">
+                                                    <span class="text-danger" id="city"></span>
+                                                </div>
+                                                <div class="d-flex justify-content-end border-top py-3">
+                                                    <button type="button" class="btn btn-danger mx-2" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-info mx-2" onclick="postItem(event)">Save</button>
+                                                </div>  
+                                            </form>
+                                        </div>
+                                    </div>
+                             </div>
+                         </div>`;
 
         $('#activeModal').html(html);
         $('#updateItems').modal('show');
 
     }
 
-    function postItem(event) {
-        // event.preventDefault();
-        var data = new FormData();
-        $('#formData').serializeArray().forEach((elem) => {
+    
+    function postItem(event, get_id) {
+        event.preventDefault();
 
-            data.append(elem['name'], elem['value']);
-
-        });
-
+        data = $('#formData').serialize();
+        
         $.ajax({
-
             type: "POST",
-            url: "{{route('storeDesigination')}}",
+            url: "{{route('store_locatopn')}}",
             headers: {
 
                 "X-CSRF-TOKEN": "{{ csrf_token() }}",
             },
-            processData: false,
-            contentType: false,
             data: data, // serializes the form's elements.
-
-            success: function(response) {
-                console.log(response);
-
-                operateData(response);
+            success: function(data) {
+                console.log(data)
+                operateData(data);
             },
             error: function(data) {
                 console.log('An error occurred.');
@@ -210,7 +179,7 @@
             setInterval((e) => {
                 location.reload();
             }, 4000);
-
+           
         }
     }
 </script>

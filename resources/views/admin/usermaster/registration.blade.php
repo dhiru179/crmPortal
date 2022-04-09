@@ -128,7 +128,7 @@
                                         </div>
                                         <div class="form-group mb-3">
                                               <label>Last Name</label>
-                                            <input type="text" class="form-control" autocomplete="off" name="lastName" value="${obj.last_name}" placeholder="Last Name">
+                                            <input type="text" class="form-control" autocomplete="off" name="lastName" value="${(obj.last_name==null)?(""):(obj.last_name)}" placeholder="Last Name">
                                             <span class="text-danger" id="lastName"></span>
                                         </div>
                                         <div class="form-group mb-3">
@@ -140,10 +140,10 @@
                                         <div class="form-group mb-3">
                                             <label>User Type</label>
                                             <select class="form-select" name="userType">
+                                            <option selected value="${obj.user_type_id}">${obj.user_type}</option>
                                                 @foreach ($users_type as $user)
                                                 <option value="{{ $user->id }}">{{ $user->user_type }}</option>
                                                 @endforeach
-                                                <option selected value="${obj.user_type_id}">${obj.user_type}</option>
                                             </select>
                                             <span class="text-danger" id="userType"></span>
                                         </div>
@@ -161,7 +161,7 @@
                                         </div>
                                         <div class="form-group mb-3">
                                                <label>Email</label>
-                                            <input type="email" class="form-control" autocomplete="off" name="email" placeholder="email" value="${obj.email}" required>
+                                            <input type="email" class="form-control" autocomplete="off" name="email" placeholder="email" value="${(obj.email==null)?(""):(obj.email)}" required>
                                             <span class="text-danger" id="email"></span>
                                         </div>
                                         <div class="form-group mb-3">
