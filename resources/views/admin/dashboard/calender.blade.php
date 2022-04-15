@@ -44,7 +44,8 @@
                                     <td></td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <a href="" class="btn btn-info btn-sm m-1" title="VIEW"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            <a href="" class="btn btn-danger btn-sm m-1" title="DELETE"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            <a href="" class="btn btn-info btn-sm m-1" title="MODIFY"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                             
                                         </div>
                                     </td>

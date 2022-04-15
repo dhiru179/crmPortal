@@ -132,7 +132,10 @@
         </div>
         <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
             <label for="">Outdoor Amenties</label>
-            <select class="form-select" name="outdoorAmenties" required>
+            <select class="selectpicker w-100" name="outdoorAmenties" required multiple data-max-options="2">
+                <option value="">multiple choice</option>
+                <option value="">multiple choice</option>
+                <option value="">multiple choice</option>
                 <option value="">multiple choice</option>
             </select>
         </div>
@@ -198,6 +201,14 @@
     function submitForm(e) {
         alert('ok');
     }
+
+    $('.selectpicker').selectpicker({
+    
+      style: 'form-select',
+      size: 4
+  });
+
+
     function initialize(){
      var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
      var myOptions = {

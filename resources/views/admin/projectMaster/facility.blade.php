@@ -33,8 +33,8 @@
                     <td>{{$item->facility_type}}</td>
                     <td class="text-center">
                         <div class="btn-group">
-                            <button onclick="editFormData(event,'{{json_encode($item)}}')" title="VIEW" class="btn btn-info btn-sm m-1"><i class="fa fa-eye" aria-hidden="true"></i></button>
                             <button onclick="editFormData(event,'{{json_encode($item)}}')" title="MODIFY" class="btn btn-warning btn-sm m-1 "><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                            <button onclick="editFormData(event,'{{json_encode($item)}}')" title="DELETE" class="btn btn-danger btn-sm m-1"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                         </div>
                     </td>
                 </tr>

@@ -36,3 +36,12 @@
     color: rgb(255, 255, 255);
     cursor: pointer;
 }
+
+.selectpicker {
+    background-color: #06414e;
+}
+
+.select-picker-control {
+    background-color: transparent;
+    outline: none;
+}
