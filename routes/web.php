@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\LeadController;
 use App\Http\Controllers\admin\ProjectMasterController;
 use App\Http\Controllers\admin\DealController;
 use App\Http\Controllers\admin\ReportController;
+use App\Http\Controllers\admin\InteractionController;
 
 
 
@@ -86,7 +87,9 @@ Route::group(['middleware' => 'adminAuth'], function () {
     
     Route::get('/deal_registration', [DealController::class, 'dealRegistration'])->name('dealRegistration');
 
+    Route::get('/interaction_registration', [InteractionController::class, 'interaction'])->name('interaction');
 
+    
 
      Route::get('/report_lead_wise', [ReportController::class, 'leadWise'])->name('lead_wise');
      Route::get('/report_advisor_wise', [ReportController::class, 'advisorWise'])->name('advisor_wise');

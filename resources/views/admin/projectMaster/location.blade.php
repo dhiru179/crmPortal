@@ -8,7 +8,6 @@
             <li class="breadcrumb-item">Location</li>
         </ol>
         <div class="alert alert-success m-0 d-flex align-items-center" id="flashMsg" role="alert" style="width: 0px;height:51px;position:fixed;right:0;transition:width 1s;border:0;padding:0rem;">gfffffffff</div>
-
     </nav>
     @if(session()->has('msg'))
 <script>

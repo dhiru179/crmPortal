@@ -46,10 +46,10 @@
                             <li><a class="dropdown-item" href="{{route('leadregistration')}}">Lead Registration</a></li>
                             <li><a class="dropdown-item" href="{{route('projectregistration')}}">Project Registration</a></li>
                             <li><a class="dropdown-item" href="{{route('dealRegistration')}}">Deal Registration</a></li>
-
+                            <li><a class="dropdown-item" href="{{route('interaction')}}">Interaction Registration</a></li>
                         </ul>
                     </li>
-
+                    
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,7 +80,6 @@
                             <li><a class="dropdown-item" href="{{route('project_wise')}}">Project-Wise Report</a></li>
                             <li><a class="dropdown-item" href="{{route('campaign_wise')}}">Campaign-Wise Report</a></li>
                             <li><a class="dropdown-item" href="{{route('source_wise')}}">Source-Wise Report</a></li>
-                            <li><a class="dropdown-item" href="{{route('date_wise')}}">Report Date Type</a></li>
                         </ul>
                     </li>
                 </ul>
