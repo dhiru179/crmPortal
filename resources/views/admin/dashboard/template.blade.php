@@ -68,6 +68,21 @@
                         </ul>
                     </li>
 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Performance Report
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{route('lead_wise')}}">Lead-Wise Report</a></li>
+                            <li><a class="dropdown-item" href="{{route('advisor_wise')}}">Advisor-wise Report</a></li>
+                            <li><a class="dropdown-item" href="{{route('team_lead_wise')}}">Team Leader-Wise Report</a></li>
+                            <li><a class="dropdown-item" href="{{route('overall_lead_wise')}}">Overall lead Report</a></li>
+                            <li><a class="dropdown-item" href="{{route('project_wise')}}">Project-Wise Report</a></li>
+                            <li><a class="dropdown-item" href="{{route('campaign_wise')}}">Campaign-Wise Report</a></li>
+                            <li><a class="dropdown-item" href="{{route('source_wise')}}">Source-Wise Report</a></li>
+                            <li><a class="dropdown-item" href="{{route('date_wise')}}">Report Date Type</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <form class="d-flex">
 

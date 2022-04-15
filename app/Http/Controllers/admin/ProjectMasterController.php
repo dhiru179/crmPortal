@@ -59,6 +59,24 @@ class ProjectMasterController extends Controller
             return $th->getMessage();
         }
     }
+
+    public function deleteDeveloper(Request $request)
+    {
+        try {
+            DB::table('developer_reg')->where(['id' => $request->id])->delete();
+            session()->flash('msg', 'Delete Successfully');
+            return redirect('project_developer_registration');
+        } catch (\Throwable $th) {
+            if ($th->getCode() == 23000) {
+                session()->flash('msg', 'This is already exist');
+                return redirect('project_developer_registration');
+            } else {
+                abort(404);
+                return [$th->getMessage(), $th->getCode()];
+            }
+        }
+    }
+
     public function facilityRegistration()
     {
         $db = [
@@ -109,7 +127,24 @@ class ProjectMasterController extends Controller
             return $th->getMessage();
         }
     }
-    public function loanFacilityRegistration()
+    public function deleteFacilityData(Request $request)
+    {
+        try {
+            DB::table('facility_reg')->where(['id' => $request->id])->delete();
+            session()->flash('msg', 'Delete Successfully');
+            return redirect('project_facility_registration');
+        } catch (\Throwable $th) {
+            if ($th->getCode() == 23000) {
+                session()->flash('msg', 'This is already exist');
+                return redirect('project_facility_registration');
+            } else {
+                abort(404);
+                return [$th->getMessage(), $th->getCode()];
+            }
+        }
+    }
+
+    public function loanFacilitatorRegistration()
     {
         $db = [
             'facilitator_reg' => DB::table('facilitator_reg')->get(),
@@ -157,6 +192,23 @@ class ProjectMasterController extends Controller
             return $th->getMessage();
         }
     }
+    public function deleteLoanFacilitatorData(Request $request)
+    {
+        try {
+            DB::table('facilitator_reg')->where(['id' => $request->id])->delete();
+            session()->flash('msg', 'Delete Successfully');
+            return redirect('project_loanFacility_registration');
+        } catch (\Throwable $th) {
+            if ($th->getCode() == 23000) {
+                session()->flash('msg', 'This is already exist');
+                return redirect('project_loanFacility_registration');
+            } else {
+                abort(404);
+                return [$th->getMessage(), $th->getCode()];
+            }
+        }
+    }
+    
     public function location()
     {
         $db = [
@@ -202,4 +254,20 @@ class ProjectMasterController extends Controller
         }
     }
     
+    public function deleteLocation(Request $request)
+    {
+        try {
+            DB::table('preferred_location')->where(['id' => $request->id])->delete();
+            session()->flash('msg', 'Delete Successfully');
+            return redirect('project_location');
+        } catch (\Throwable $th) {
+            if ($th->getCode() == 23000) {
+                session()->flash('msg', 'This is already exist');
+                return redirect('project_location');
+            } else {
+                abort(404);
+                return [$th->getMessage(), $th->getCode()];
+            }
+        }
+    }
 }

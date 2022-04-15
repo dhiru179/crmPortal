@@ -9,6 +9,23 @@
     </ol>
     <div class="alert alert-success m-0 d-flex align-items-center" id="flashMsg" role="alert" style="width: 0px;height:51px;position:fixed;right:0;transition:width 1s;border:0;padding:0rem;"></div>
 </nav>
+@if(session()->has('msg'))
+<script>
+    $("#flashMsg").css({
+        "width": "60%",
+        "padding": "1rem",
+        "display": "block",
+        "border": "1px solid transparent;"
+    });
+    $("#flashMsg").html(`<strong>{{session('msg')}}</strong>`);
+    setInterval((e) => {
+        $("#flashMsg").css({
+            "width": "0",
+            "padding": "0",
+        });
+    }, 3000);
+</script>
+@endif
 <div class="container mt-3">
     <div class="d-flex align-item-center justify-content-between mb-3 ">
         <div class="col-6">
@@ -32,8 +49,7 @@
                     <td class="text-center">
                         <div class="btn-group">
                             <button onclick="editFormData(event,'{{json_encode($item)}}')" title="MODIFY" class="btn btn-warning btn-sm m-1 "><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                            <button onclick="editFormData(event,'{{json_encode($item)}}')" title="DELETE" class="btn btn-danger btn-sm m-1"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                        </div>
+                            <a href="{{ route('loanFacility_delete', ['id'=>$item->id]) }}" title="DELETE" class="btn btn-danger btn-sm m-1"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                     </td>
                     </tr>
                     @endforeach
@@ -172,23 +188,7 @@
                 $("#" + key).html(value);
             }
         } else if (data.status == true) {
-            $('#updateItems').modal('hide');
-            $("#flashMsg").css({
-                "width": "60%",
-                "padding": "1rem",
-                "display": "block",
-                "border": "1px solid transparent;"
-            });
-            $("#flashMsg").html(`<strong>${data.msg}</strong>`);
-            setInterval((e) => {
-                $("#flashMsg").css({
-                    "width": "0",
-                    "padding": "0",
-                });
-            }, 3000);
-            setInterval((e) => {
-                location.reload();
-            }, 4000);
+  location.reload();
 
         }
     }

@@ -9,8 +9,25 @@
         </ol>
         <div class="alert alert-success m-0 d-flex align-items-center" id="flashMsg" role="alert" style="width: 0px;height:51px;position:fixed;right:0;transition:width 1s;border:0;padding:0rem;"></div>
     </nav>
+    @if(session()->has('msg'))
+<script>
+    $("#flashMsg").css({
+        "width": "60%",
+        "padding": "1rem",
+        "display": "block",
+        "border": "1px solid transparent;"
+    });
+    $("#flashMsg").html(`<strong>{{session('msg')}}</strong>`);
+    setInterval((e) => {
+        $("#flashMsg").css({
+            "width": "0",
+            "padding": "0",
+        });
+    }, 3000);
+</script>
+@endif
     <div class="container utils_center mt-3">
-        <form class="row" id="formData"  onsubmit="return postItem(event)">
+        <form class="row" id="formData" onsubmit="return postItem(event)">
             <div class="form-group mb-3 col-sm-6  col-md-4  col-lg-4 col-xl-4 col-xxl-3">
                 <label for="">First Name</label>
                 <input type="text" name="firstName" class="form-control" required>
@@ -215,24 +232,7 @@
                 $("#" + key).html(value);
             }
         } else if (data.status == true) {
-            $('#updateItems').modal('hide');
-            $("#flashMsg").css({
-                "width": "60%",
-                "padding": "1rem",
-                "display": "block",
-                "border": "1px solid transparent;"
-            });
-            $("#flashMsg").html(`<strong>${data.msg}</strong>`);
-            setInterval((e) => {
-                $("#flashMsg").css({
-                    "width": "0",
-                    "padding": "0",
-                });
-            }, 3000);
-            setInterval((e) => {
-                location.reload();
-            }, 4000);
-
+            location.reload();
         }
     }
 </script>

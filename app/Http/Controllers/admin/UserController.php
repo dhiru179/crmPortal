@@ -79,6 +79,22 @@ class UserController extends Controller
         }
     }
 
+    public function deleteUser(Request $request)
+    {
+        try {
+            DB::table('users')->where(['id' => $request->id])->delete();
+            session()->flash('msg', 'Delete Successfully');
+            return redirect('registration');
+        } catch (\Throwable $th) {
+            if ($th->getCode() == 23000) {
+                session()->flash('msg', 'This is already exist');
+                return redirect('registration');
+            } else {
+                abort(404);
+                return [$th->getMessage(), $th->getCode()];
+            }
+        }
+    }
     public function empStatus()
     {
         return view('admin/usermaster/empstatus');
@@ -126,6 +142,22 @@ class UserController extends Controller
             }
         } catch (\Throwable $th) {
             return $th->getMessage();
+        }
+    }
+    public function deleteDesigination(Request $request)
+    {
+        try {
+            DB::table('desigination')->where(['id' => $request->id])->delete();
+            session()->flash('msg', 'Delete Successfully');
+            return redirect('master/desigination');
+        } catch (\Throwable $th) {
+            if ($th->getCode() == 23000) {
+                session()->flash('msg', 'This is already exist');
+                return redirect('master/desigination');
+            } else {
+                abort(404);
+                return [$th->getMessage(), $th->getCode()];
+            }
         }
     }
 

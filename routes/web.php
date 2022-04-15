@@ -7,6 +7,8 @@ use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\LeadController;
 use App\Http\Controllers\admin\ProjectMasterController;
 use App\Http\Controllers\admin\DealController;
+use App\Http\Controllers\admin\ReportController;
+
 
 
 
@@ -56,23 +58,44 @@ Route::group(['middleware' => 'adminAuth'], function () {
 
     Route::get('/leadregistration', [LeadController::class, 'leadRegistration'])->name('leadregistration');
     Route::post('/leadregistration', [LeadController::class, 'storeLead'])->name('storeLead');
+    Route::post('/lead_delete', [LeadController::class, 'deleteLead'])->name('leadDelete');
     Route::get('/campaignmaster', [LeadController::class, 'campaignMaster'])->name('campaign');
     Route::post('/campaignmaster', [LeadController::class, 'storeCampaignData'])->name('storeCampaignData');
+    Route::get('/delete_campaign', [LeadController::class, 'deleteCampaignData'])->name('deleteCampaign');
     Route::get('/leadsource', [LeadController::class, 'leadSource'])->name('leadsource');
     Route::post('/leadsource', [LeadController::class, 'storeLeadSourceData'])->name('lead_source');
+    Route::get('/delete_lead_source', [LeadController::class, 'deleteLeadSource'])->name('deleteLeadSource');
 
     Route::get('/project_registration', [ProjectMasterController::class, 'projectRegistration'])->name('projectregistration');
     Route::get('/project_developer_registration', [ProjectMasterController::class, 'developerRegistration'])->name('developer');
     Route::post('/project_developer_registration', [ProjectMasterController::class, 'storeDeveloper'])->name('developer_reg');
+    Route::get('/project_developer_delete', [ProjectMasterController::class, 'deleteDeveloper'])->name('developer_delete');
+
     Route::get('/project_facility_registration', [ProjectMasterController::class, 'facilityRegistration'])->name('facility');
     Route::post('/project_facility_registration', [ProjectMasterController::class, 'storeFacilityData'])->name('facility_reg');
-    Route::get('/project_loanFacility_registration', [ProjectMasterController::class, 'loanFacilityRegistration'])->name('loanFacility');
+    Route::get('/project_facility_delete', [ProjectMasterController::class, 'deleteFacilityData'])->name('facility_delete');
+
+    Route::get('/project_loanFacility_registration', [ProjectMasterController::class, 'loanFacilitatorRegistration'])->name('loanFacility');
     Route::post('/project_loanFacility_registration', [ProjectMasterController::class, 'storeLoanFacilitatorData'])->name('facilitator_reg');
+    Route::get('/project_loanFacility_delete', [ProjectMasterController::class, 'deleteLoanFacilitatorData'])->name('loanFacility_delete');
+
     Route::get('/project_location', [ProjectMasterController::class, 'location'])->name('get_location');
     Route::post('/project_location', [ProjectMasterController::class, 'storeLocation'])->name('store_locatopn');
+    Route::get('/project_location_delete', [ProjectMasterController::class, 'deleteLocation'])->name('delete_location');
     
     
     Route::get('/deal_registration', [DealController::class, 'dealRegistration'])->name('dealRegistration');
-    
+
+
+
+     Route::get('/report_lead_wise', [ReportController::class, 'leadWise'])->name('lead_wise');
+     Route::get('/report_advisor_wise', [ReportController::class, 'advisorWise'])->name('advisor_wise');
+     Route::get('/report_team_lead_wise', [ReportController::class, 'teamLeadWise'])->name('team_lead_wise'); 
+     Route::get('/report_overall_lead_wise', [ReportController::class, 'overallLeadWise'])->name('overall_lead_wise');
+     Route::get('/report_project_wise', [ReportController::class, 'projectWise'])->name('project_wise');
+     Route::get('/report_campaign_wise', [ReportController::class, 'campaignWise'])->name('campaign_wise');
+     Route::get('/report_source_wise', [ReportController::class, 'sourceWise'])->name('source_wise'); 
+     Route::get('/report_date_wise', [ReportController::class, 'dateWise'])->name('date_wise');
+
 
 });

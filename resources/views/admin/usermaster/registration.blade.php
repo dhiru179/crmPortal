@@ -10,13 +10,30 @@
         </ol>
         <div class="alert alert-success m-0 d-flex align-items-center" id="flashMsg" role="alert" style="width: 0px;height:51px;position:fixed;right:0;transition:width 1s;border:0;padding:0rem;"></div>
     </nav>
+    @if(session()->has('msg'))
+    <script>
+        $("#flashMsg").css({
+            "width": "60%",
+            "padding": "1rem",
+            "display": "block",
+            "border": "1px solid transparent;"
+        });
+        $("#flashMsg").html(`<strong>{{session('msg')}}</strong>`);
+        setInterval((e) => {
+            $("#flashMsg").css({
+                "width": "0",
+                "padding": "0",
+            });
+        }, 3000);
+    </script>
+    @endif
     <div class="px-3 mt-3">
         <div class="d-flex align-item-center justify-content-between mb-3 ">
             <div class="col-6">
                 <button type="button" class="btn btn-primary" onclick="addFormData(event)">Add User</button>
             </div>
             <div class=" col-6">
-                <input type="search" class="form-control "  value="" id="inputSearchByname" placeholder="Search">
+                <input type="search" class="form-control " value="" id="inputSearchByname" placeholder="Search">
             </div>
         </div>
         <div class="table-responsive" id="appendtable">
@@ -34,7 +51,7 @@
                     @foreach($users as $key=>$item)
                     <tr>
                         <td>{{$key+1}}</td>
-                        <td class="text-center" >{{$item->first_name.' '.$item->last_name}}</td>
+                        <td class="text-center">{{$item->first_name.' '.$item->last_name}}</td>
                         <td class="text-center">{{$item->email}}</td>
                         <td class="text-center">{{$item->user_type}}</td>
                         <td class="text-center">{{$item->phone}}</td>
@@ -95,8 +112,8 @@
             phone: "",
             team_leaders: "Team Leaders",
             emp_status: "Employee Status",
-            user_type:"Select User",
-            desigination:"Desigination",
+            user_type: "Select User",
+            desigination: "Desigination",
         }
         callToActiveModal(JSON.stringify(data));
         return true;
@@ -214,7 +231,7 @@
             data.append(elem['name'], elem['value']);
 
         });
-      
+
 
         $.ajax({
 
@@ -248,24 +265,8 @@
                 $("#" + key).html(value);
             }
         } else if (data.status == true) {
-            $('#updateItems').modal('hide');
-            $("#flashMsg").css({
-                "width": "60%",
-                "padding": "1rem",
-                "display": "block",
-                "border": "1px solid transparent;"
-            });
-            $("#flashMsg").html(`<strong>${data.msg}</strong>`);
-            setInterval((e) => {
-                $("#flashMsg").css({
-                    "width": "0",
-                    "padding": "0",
-                });
-            }, 3000);
-            setInterval((e) => {
-                location.reload();
-            }, 4000);
 
+            location.reload();
         }
     }
 </script>

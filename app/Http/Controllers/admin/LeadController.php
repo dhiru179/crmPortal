@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Psy\CodeCleaner\FunctionContextPass;
 
 class LeadController extends Controller
 {
@@ -17,17 +18,17 @@ class LeadController extends Controller
     public function leadRegistration()
     {
         $db = [
-            'campaign_master'=>DB::table('campaign_master')->get(),
-            'lead_source'=>DB::table('lead_source')->get(),
-            
+            'campaign_master' => DB::table('campaign_master')->get(),
+            'lead_source' => DB::table('lead_source')->get(),
+
         ];
-        return view('admin/leadmaster/leadregistration',$db);
+        return view('admin/leadmaster/leadregistration', $db);
     }
 
     public function storeLead(Request $request)
     {
         try {
-          
+
             $validator = Validator::make($request->all(), [
 
                 'firstName' => 'required',
@@ -83,7 +84,10 @@ class LeadController extends Controller
         }
     }
 
-
+    public function deleteLead(Request $request)
+    {
+        return "s";
+    }
     public function campaignMaster()
     {
         $db = [
@@ -136,6 +140,24 @@ class LeadController extends Controller
         }
     }
 
+
+    public function deleteCampaignData(Request $request)
+    {
+        try {
+            DB::table('campaign_master')->where(['id' => $request->id])->delete();
+            session()->flash('msg', 'Delete Successfully');
+            return redirect('campaignmaster');
+        } catch (\Throwable $th) {
+            if ($th->getCode() == 23000) {
+                session()->flash('msg', 'This is already exist');
+                return redirect('campaignmaster');
+            } else {
+                abort(404);
+                return [$th->getMessage(), $th->getCode()];
+            }
+        }
+    }
+
     public function leadSource()
     {
         $db = [
@@ -179,6 +201,23 @@ class LeadController extends Controller
             }
         } catch (\Throwable $th) {
             return $th->getMessage();
+        }
+    }
+
+    public function deleteLeadSource(Request $request)
+    {
+        try {
+            DB::table('lead_source')->where(['id' => $request->id])->delete();
+            session()->flash('msg', 'Delete Successfully');
+            return redirect('leadsource');
+        } catch (\Throwable $th) {
+            if ($th->getCode() == 23000) {
+                session()->flash('msg', 'This is already exist');
+                return redirect('leadsource');
+            } else {
+                abort(404);
+                return [$th->getMessage(), $th->getCode()];
+            }
         }
     }
 }
