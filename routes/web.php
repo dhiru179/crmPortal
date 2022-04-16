@@ -57,8 +57,8 @@ Route::group(['middleware' => 'adminAuth'], function () {
     
     
 
-    Route::get('/leadregistration', [LeadController::class, 'leadRegistration'])->name('leadregistration');
-    Route::post('/leadregistration', [LeadController::class, 'storeLead'])->name('storeLead');
+    Route::get('/lead_registration', [LeadController::class, 'leadRegistration'])->name('leadregistration');
+    Route::post('/lead_registration', [LeadController::class, 'storeLead'])->name('storeLead');
     Route::post('/lead_delete', [LeadController::class, 'deleteLead'])->name('leadDelete');
     Route::get('/campaignmaster', [LeadController::class, 'campaignMaster'])->name('campaign');
     Route::post('/campaignmaster', [LeadController::class, 'storeCampaignData'])->name('storeCampaignData');
@@ -68,6 +68,7 @@ Route::group(['middleware' => 'adminAuth'], function () {
     Route::get('/delete_lead_source', [LeadController::class, 'deleteLeadSource'])->name('deleteLeadSource');
 
     Route::get('/project_registration', [ProjectMasterController::class, 'projectRegistration'])->name('projectregistration');
+    Route::post('/project_registration', [ProjectMasterController::class, 'storeProject'])->name('store_project_registration');
     Route::get('/project_developer_registration', [ProjectMasterController::class, 'developerRegistration'])->name('developer');
     Route::post('/project_developer_registration', [ProjectMasterController::class, 'storeDeveloper'])->name('developer_reg');
     Route::get('/project_developer_delete', [ProjectMasterController::class, 'deleteDeveloper'])->name('developer_delete');
@@ -86,8 +87,10 @@ Route::group(['middleware' => 'adminAuth'], function () {
     
     
     Route::get('/deal_registration', [DealController::class, 'dealRegistration'])->name('dealRegistration');
+    Route::post('/deal_registration', [DealController::class, 'storeDeal'])->name('store_deal');
 
     Route::get('/interaction_registration', [InteractionController::class, 'interaction'])->name('interaction');
+    Route::post('/interaction_registration', [InteractionController::class, 'storeInteraction'])->name('store_interaction');
 
     
 

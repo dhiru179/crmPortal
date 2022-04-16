@@ -42,6 +42,9 @@
 }
 
 .select-picker-control {
-    background-color: transparent;
-    outline: none;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }

@@ -20,6 +20,9 @@ class LeadController extends Controller
         $db = [
             'campaign_master' => DB::table('campaign_master')->get(),
             'lead_source' => DB::table('lead_source')->get(),
+            'location'=>DB::table('preferred_location')->get(),
+            'project_master'=>DB::table('project_master')->get(['id','project_name']),
+            'lead_master'=>DB::table('lead_master')->get(),
 
         ];
         return view('admin/leadmaster/leadregistration', $db);
@@ -28,7 +31,7 @@ class LeadController extends Controller
     public function storeLead(Request $request)
     {
         try {
-
+            return $request->all();
             $validator = Validator::make($request->all(), [
 
                 'firstName' => 'required',

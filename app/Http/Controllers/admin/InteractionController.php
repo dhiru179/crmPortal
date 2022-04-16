@@ -11,7 +11,14 @@ class InteractionController extends Controller
 {
     public function interaction()
     {
-        return view('admin/interactionMaster/intraction');
+        $db = [
+            'interaction' => DB::table('interaction')->get(),
+        ];
+        return view('admin/interactionMaster/intraction', $db);
     }
 
+    public function storeInteraction(Request $request)
+    {
+        return $request->all();
+    }
 }

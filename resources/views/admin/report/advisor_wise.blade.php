@@ -13,8 +13,8 @@
         <table class="table table-hover table-bordered mb-5">
             <thead class="thead_sticky">
                 <th>Name</th>
-                <th> No. of Leads</th>
-                <th> No. of Lead Engaged</th>
+                <th>No. of Leads</th>
+                <th>No. of Lead Engaged</th>
                 <th>Avg. Response</th>
                 <th>First Impression</th>
                 <th> NEW Leads</th>
@@ -31,7 +31,7 @@
                 <th> Avg. Conversion</th>
                 <th> Avg. Monthly Deals</th>
                 <th> Last Month Deal</th>
-                <th> Last month No. of Deal</th>
+                <th> Last Month No. of Deal</th>
                 <th> Current Deal</th>
                 <th> Current No. of Deals</th>
 

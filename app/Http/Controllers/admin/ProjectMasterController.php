@@ -16,7 +16,15 @@ class ProjectMasterController extends Controller
      */
     public function projectRegistration()
     {
-        return view('admin/projectMaster/projectRegistration');
+        $db = [
+            'project_master' => DB::table('project_master')->get(),
+        ];
+        return view('admin/projectMaster/projectRegistration',$db);
+    }
+
+    public function storeProject(Request $request)
+    {
+        return $request->all();
     }
     public function developerRegistration()
     {
